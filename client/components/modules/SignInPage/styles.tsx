@@ -62,4 +62,11 @@ export const styles = StyleSheet.create({
     fontFamily: "Montserrat-Bold",
     lineHeight: 16.1,
   },
+  input: {},
+  inputImage: {
+    position: "absolute",
+    zIndex: 2,
+    top: "16%",
+    left: "3%",
+  },
 });

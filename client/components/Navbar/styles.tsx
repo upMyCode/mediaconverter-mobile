@@ -7,9 +7,19 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 37,
+    marginTop: 57,
     paddingRight: 21,
     paddingLeft: 21,
   },
   navbarItem: {},
+  navbarStyleGroup: {
+    display: "flex",
+    alignItems: "center",
+  },
+  navbarStyleGroupText: {
+    color: "#FFFFFF",
+    fontSize: 14,
+    fontFamily: "Montserrat-ExtraBold",
+    lineHeight: 16.1,
+  },
 });

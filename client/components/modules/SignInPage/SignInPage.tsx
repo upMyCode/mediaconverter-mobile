@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import * as Font from "expo-font";
 import Navbar from "../../Navbar/Navbar";
 import AppLoading from "expo-app-loading";
 import MainButton from "../../MainButton/MainButton";
+import { useLinkPressHandler } from "react-router-native";
 import { styles } from "./styles";
 
-const MainComponent = () => {
+const SignInPage = () => {
   const [loaded, setLoaded] = useState<Boolean>(false);
 
   async function loadFonts() {
     await Font.loadAsync({
       "Montserrat-SemiBold": require("../../../assets/fonts/Montserrat/Montserrat-SemiBold.ttf"),
       "Montserrat-Bold": require("../../../assets/fonts/Montserrat/Montserrat-Bold.ttf"),
+      "Montserrat-ExtraBold": require("../../../assets/fonts/Montserrat/Montserrat-ExtraBold.ttf"),
     })
       .then((res) => {
         console.log("FONTS LOADED!");
@@ -34,6 +36,8 @@ const MainComponent = () => {
     );
   }
 
+  // let pageRouterHandle = useLinkPressHandler("sign-up");
+
   return (
     <View>
       <Navbar />
@@ -44,27 +48,41 @@ const MainComponent = () => {
             <Text style={styles.text}>Let's convert your file for free</Text>
           </View>
           <View style={styles.form}>
-            <TextInput
-              style={styles.textInput}
-              placeholder="randomemail@gmail.com"
-              textAlign={"center"}
-            />
-            <TextInput
-              secureTextEntry={true}
-              style={styles.textInput}
-              placeholder="email"
-              textAlign={"center"}
-            />
+            <View style={styles.input}>
+              <Image
+                source={require("../../../assets/user.png")}
+                style={styles.inputImage}
+              />
+              <TextInput
+                style={styles.textInput}
+                placeholder="randomemail@gmail.com"
+                textAlign={"center"}
+              />
+            </View>
+            <View style={styles.input}>
+              <Image
+                source={require("../../../assets/lock.png")}
+                style={styles.inputImage}
+              />
+              <TextInput
+                secureTextEntry={true}
+                style={styles.textInput}
+                placeholder="password"
+                textAlign={"center"}
+              />
+            </View>
           </View>
           <MainButton context="Sign In" title="" />
         </View>
         <View style={styles.footer}>
           <Text style={styles.footerText}>Don't have an account?</Text>
-          <Text style={styles.footerTextHeader}>Sign Up</Text>
+          <TouchableOpacity>
+            <Text style={styles.footerTextHeader}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
   );
 };
 
-export default MainComponent;
+export default SignInPage;
